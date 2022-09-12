@@ -11,6 +11,17 @@ a Dockerfile, useful for testing execution. We use Docker here to virtualize
 the build environment, installing nothing on the local machine that can corrupt
 operations.
 
+#### Go
+
+The following should work to validate the Go lyrics dump.
+
+```bash
+cd Go/
+docker build -t go_99bottles .
+docker run go_99bottles
+docker run go_99bottles test
+```
+
 #### Python
 
 The following should work to validate the Python lyrics dump.
