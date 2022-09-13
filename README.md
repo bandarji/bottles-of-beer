@@ -32,3 +32,12 @@ docker build -t py_99bottles .
 docker run py_99bottles
 docker run py_99bottles test
 ```
+
+#### Rust
+
+```bash
+cd Rust/
+docker build -t rust_99bottles .
+docker run rust_99bottles
+docker run rust_99bottles test
+```
