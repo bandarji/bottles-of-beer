@@ -30,3 +30,11 @@ def test_pluralize_bottles(count: int, expected: str):
 @pytest.mark.parametrize("count, expected", TEST_VERSES)
 def test_verse(count: int, expected: str):
     assert expected == verse(count)
+
+def test_count_low():
+    with pytest.raises(AssertionError):
+        verse(0)
+
+def test_count_high():
+    with pytest.raises(AssertionError):
+        verse(100)
