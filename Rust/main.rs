@@ -1,17 +1,19 @@
+// Based on the count of bottles, assemble a singular or plural response.
 fn bottle_plurality(count: u8) -> String {
-    if count == 1 {
-        return "bottle".to_string();
-    } else {
-        return "bottles".to_string();
+    let string: &str = "bottle";
+    if count != 1 {
+        return format!("{string}s");
     }
+    return format!("{string}");
 }
 
 #[test]
 fn test_bottle_plurality() {
-    assert!(bottle_plurality(1) == "bottle".to_string());
-    assert!(bottle_plurality(2) == "bottles".to_string());
+    assert!(bottle_plurality(1) == "bottle");
+    assert!(bottle_plurality(2) == "bottles");
 }
 
+// Returns a verse from the song '99 Bottles of Beer', based on bottle count.
 fn verse(count: u8) -> String {
     if count == 0 {
         return "No more bottles of beer on the wall. No more bottles of beer.\n\
@@ -21,13 +23,11 @@ fn verse(count: u8) -> String {
                 Take one down and pass it around. \
                 No more bottles of beer on the wall.\n".to_string();
     } else {
-        let mut base: String = format!("{} {} of beer on the wall. {} {} of beer.\n",
-                                    count, bottle_plurality(count), count,
-                                    bottle_plurality(count)).to_owned();
-        let add: &str = &*format!("Take 1 down and pass it around. {} {} of beer on the wall.\n",
-                                  count - 1, bottle_plurality(count - 1));
-        base.push_str(add);
-        return base;
+        return format!(
+            "{} {} of beer on the wall. {} {} of beer.\n\
+            Take 1 down and pass it around. {} {} of beer on the wall.\n",
+            count, bottle_plurality(count), count, bottle_plurality(count),
+            count - 1, bottle_plurality(count - 1));
     }
 }
 
