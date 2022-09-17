@@ -41,3 +41,21 @@ docker build -t rust_99bottles .
 docker run rust_99bottles
 docker run rust_99bottles test
 ```
+
+#### TCL (F5 Networks iRule)
+
+Create a virtual service. The iRules directory contains two code examples, one
+that returns HTML, another that returns plain text.
+
+```bash
+tmsh create / ltm virtual vip.99bottles.10000 { \
+     destination x.x.x.x:10000 ip-protocol tcp \
+     mask 255.255.255.255 rules { irule.99bottles } \
+     profiles add { tcp {} http {} } }
+```
+
+Use cURL to view the song lyrics.
+
+```bash
+curl -x '' -s04 http://x.x.x.x:10000/
+```
