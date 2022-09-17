@@ -6,7 +6,7 @@ function main() {
     if [ "${1}" = 'test' ]; then
         cd /99bottles/beer && cargo test
     else
-        cd /99bottles/beer && cargo run
+        cd /99bottles/beer && cargo --quiet run
     fi
 }
 
